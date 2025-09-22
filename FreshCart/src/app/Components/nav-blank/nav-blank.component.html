@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <i class="fas fa-cart-shopping fa-xl me-2 text-light"></i>
+      <span class="brand-text">FreshCart</span>
+    </a>
+
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/brands">Brands</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center">
+        <li class="nav-item dropdown me-2">
+          <a class="nav-link dropdown-toggle text-soft" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <i class="fa-solid fa-user-lock"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li routerLink="/forgetPassword">
+              <a class="dropdown-item text-soft">Forget Password</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item me-3">
+          <a class="nav-link position-relative" routerLink="/wishlist">
+            <i class="fa-solid fa-heart-circle-plus fa-xl text-soft"></i>
+            <span class="badge bg-soft position-absolute top-0 end-0" *ngIf="favoriteNum">{{favoriteNum}}</span>
+          </a>
+        </li>
+
+        <li class="nav-item me-3">
+          <a class="nav-link position-relative" routerLink="/cart">
+            <i class="fa-solid fa-cart-arrow-down fa-xl text-soft"></i>
+            <span class="badge bg-soft position-absolute top-0 end-0" *ngIf="cartNum">{{cartNum}}</span>
+          </a>
+        </li>
+
+        <li class="nav-item d-flex gap-3 me-3">
+          <a><i class="fab fa-facebook text-light"></i></a>
+          <a><i class="fab fa-instagram text-light"></i></a>
+          <a><i class="fab fa-twitter text-light"></i></a>
+          <a><i class="fab fa-linkedin text-light"></i></a>
+          <a><i class="fab fa-whatsapp text-light"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <span (click)="signOut()" role="button" class="text-soft">SignOut</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

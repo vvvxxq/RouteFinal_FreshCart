@@ -1,0 +1,104 @@
+section.w-75 {
+  background-color: #636363; // main light background
+  color: #d6d6d6; // dark text
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin: 3rem auto;
+
+  h1 {
+    color: #b3b2b2; // accent title
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  form {
+    .form-item {
+      margin-bottom: 1.2rem;
+
+      label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: #3E2522;
+      }
+
+      input.form-control {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border-radius: 10px;
+        border: 1px solid #D3A376;
+        background-color: #FFF2DF;
+        color: #3E2522;
+        font-weight: 500;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+
+        &:focus {
+          border-color: #8C6E63;
+          box-shadow: 0 0 0 0.2rem rgba(140,110,99,0.2);
+          outline: none;
+        }
+      }
+    }
+
+    .alert {
+      font-size: 0.875rem;
+      color: #F40808; // error red
+      background-color: #FFE0B2; // light highlight
+      border: 1px solid #D3A376;
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .d-flex {
+      margin-top: 1rem;
+      align-items: center;
+      justify-content: space-between;
+
+      .main-btn {
+        background-color: #31302f;
+        color: #c1bdbd;
+        font-weight: 600;
+        padding: 0.5rem 1.2rem;
+        border-radius: 10px;
+        transition: background 0.3s ease, transform 0.3s ease;
+
+        &:hover:not(:disabled) {
+          background-color: #8C6E63;
+          color: #FFF2DF;
+          transform: translateY(-2px);
+        }
+
+        &:disabled {
+          background-color: #BEA8A7;
+          color: #FFF2DF;
+          cursor: not-allowed;
+        }
+
+        i.fas.fa-spinner {
+          margin-left: 0.5rem;
+          color: #3E2522;
+        }
+      }
+
+      a.link-primary {
+        color: #D3A376;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #8C6E63;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  p.alert {
+    text-align: center;
+  }
+}

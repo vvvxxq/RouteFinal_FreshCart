@@ -1,0 +1,359 @@
+/* ================= GLOBAL VARIABLES ================= */
+@import url("https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap");
+
+$color-dark: #3d3641; 
+$color-text: #ffff;      // Base dark (nav, headings)
+$color-primary: #878787;    // Primary accent (buttons, borders)
+$color-secondary: #383430;  // Hover / secondary accent
+$color-gray: #FFE0B2;       // Neutral gray (borders, inputs)
+$color-soft: #e2d8c9c7;     // Highlight / attention (transparent light)
+$color-light: #ddd8d1;      // Page / card background
+
+$rating-color: #ffc908;
+$shadow: rgba(0, 0, 0, 0.08) 0px 2px 6px;
+$transition: 0.4s ease;
+$font-family: "Helvetica Neue", Arial, sans-serif;
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background-color: $color-light; }
+::-webkit-scrollbar-thumb {
+  background-color: $color-secondary;
+  border-radius: 5px;
+}
+
+/* ================= BODY ================= */
+body {
+  font-family: $font-family;
+  background-color: $color-light;
+  color: $color-dark;
+  line-height: 1.6;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  background-color: $color-dark;
+  padding: 12px 20px;
+  box-shadow: $shadow;
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+
+    .brand-text {
+      color: $color-text; // Brand text highlight
+      font-size: 1.4rem;
+    }
+
+    i { color: $color-light; } // Default icon color
+  }
+
+  .nav-link {
+    color: $color-light !important;
+    font-weight: 500;
+    transition: color $transition;
+
+    &:hover { color: $color-secondary !important; }
+  }
+
+  .active-link {
+    background-color: $color-primary;
+    color: #fff !important;
+    border-radius: 6px;
+    padding: 4px 8px;
+  }
+
+  .dropdown-menu {
+    
+    border: 1px solid $color-gray;
+
+    .dropdown-item {
+      color: $color-secondary !important; // Forget password highlight
+      &:hover {  color: #fff !important; }
+    }
+  }
+
+  .nav-item i {
+    color: $color-light;
+    transition: color $transition;
+  }
+
+  .nav-item .text-soft, .nav-item .badge {
+    color: $color-soft !important; // badges & highlights
+    
+  }
+
+  .nav-item a:hover i {
+    color: $color-primary !important;
+  }
+}
+
+/* ================= BUTTONS ================= */
+.main-btn, button {
+  border: none;
+  cursor: pointer;
+  color: #fff !important;
+  background-color: $color-primary !important;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color $transition, transform $transition;
+
+  &:hover { background-color: $color-secondary !important; transform: translateY(-2px); }
+  &:disabled { background-color: $color-gray !important; cursor: not-allowed; color: #fff !important; }
+}
+
+/* ================= INPUTS ================= */
+input, textarea {
+  border: 1px solid $color-gray;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: border $transition, box-shadow $transition;
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.3) !important;
+    border-color: $color-primary !important;
+  }
+}
+
+/* ================= PRODUCT CARDS ================= */
+.product {
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid $color-primary;
+  background-color: $color-light;
+  transition: box-shadow $transition, border $transition;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: $shadow;
+    border-color: $color-secondary;
+
+    .heart { right: 8px; }
+    .add-btn, .main-btn { opacity: 1; transform: translateY(0); }
+  }
+
+  .heart {
+    font-size: 28px;
+    position: absolute;
+    top: 10px;
+    right: -50px;
+    z-index: 10;
+    cursor: pointer;
+    color: $color-secondary;
+    transition: right $transition;
+  }
+
+  .add-btn, .main-btn { transition: transform $transition, opacity $transition; transform: translateY(150%); opacity: 0; }
+}
+
+/* ================= PAGINATION ================= */
+.ngx-pagination .current { background: $color-primary !important; border-radius: 6px !important; color: #fff !important; }
+.ngx-pagination a, .ngx-pagination button { color: $color-dark !important; transition: background $transition, color $transition; }
+.ngx-pagination a:hover, .ngx-pagination button:hover { background: $color-soft !important; color: $color-primary !important; border-radius: 6px; }
+
+/* ================= TOASTS ================= */
+.toast-success {
+  position: fixed !important;
+  bottom: 1rem !important;
+  right: 1rem !important;
+  background-color: $color-primary !important;
+  color: #fff !important;
+  padding: 10px 16px;
+  border-radius: 6px;
+  box-shadow: $shadow;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background-color: $color-dark;
+  color: $color-light;
+  padding: 50px 20px;
+
+  h2, h3, p { margin: 0; color: $color-light; }
+  h2 { font-size: 1.8rem; margin-bottom: 10px; }
+  p { font-size: 0.9rem; margin-bottom: 15px; }
+
+  .form-control {
+    border-radius: 8px;
+    border: 1px solid $color-gray;
+    padding: 8px 12px;
+    margin-right: 15px;
+  }
+
+  .main-btn {
+    background-color: $color-primary !important;
+    &:hover { background-color: $color-secondary !important; }
+  }
+
+  hr { border-color: $color-gray; margin: 25px 0; }
+
+  .pay-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    img, i {
+      max-height: 50px;
+      font-size: 1.4rem;
+      color: $color-gray; 
+    }
+
+    .main-btn { margin-left: 10px; }
+  }
+}
+
+/* Spinner Icon Animation */
+.spinner-icon {
+  color: #ffffff;          // Brand primary color
+  font-size: 3rem;
+  display: block;
+  margin: 0 auto;
+  animation: pulse 1s infinite alternate ease-in-out;
+}
+
+.spinner-text {
+  color: #f8f8f8;          // Brand light accent
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* Smooth pulse animation for icon */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Optional: style the background overlay */
+ngx-spinner {
+  z-index: 1050;  // above everything
+}
+
+
+/* ================= WISHLIST / PRODUCTS ================= */
+section.container-fluid {
+  width: 95%;
+  margin: 2rem auto;
+
+  .row {
+    gap: 1.5rem;
+  }
+
+  .product {
+    position: relative;
+    background-color: $color-light;
+    border-radius: 12px;
+    box-shadow: $shadow;
+    overflow: hidden;
+    transition: transform $transition, box-shadow $transition;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+      footer {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .heart {
+        right: 10px;
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    header {
+      cursor: pointer;
+
+      img {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        transition: transform $transition;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0.5rem 0 0.25rem 0;
+        color: $color-dark;
+        text-align: center;
+      }
+
+      h4 {
+        font-size: 0.85rem;
+        color: $color-primary;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .d-flex {
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        padding: 0 0.5rem 0.5rem 0.5rem;
+
+        span.text-danger {
+          font-weight: 600;
+          color: $color-soft;
+        }
+
+        p {
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+
+          i {
+            color: $rating-color;
+          }
+
+          span {
+            font-weight: 700; /* make the rating number more visible */
+            font-size: 0.95rem;
+            color: $color-dark;
+          }
+        }
+      }
+    }
+
+    footer {
+      padding: 0.5rem;
+      text-align: center;
+      transition: transform $transition, opacity $transition;
+      transform: translateY(100%);
+      opacity: 0;
+
+      .main-btn {
+        width: 90%;
+        padding: 6px 0;
+        font-weight: 500;
+        border-radius: 10px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .heart {
+      position: absolute;
+      top: 10px;
+      right: -40px;
+      font-size: 28px;
+      color: $color-gray;
+      cursor: pointer;
+      transition: all $transition;
+
+      &:hover {
+        color: $color-soft;
+      }
+    }
+  }
+}

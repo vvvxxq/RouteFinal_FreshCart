@@ -1,0 +1,115 @@
+<!-- Hero Slider -->
+<section class="pb-5 mt-4">
+  <div class="row g-3">
+    <!-- Main slider -->
+    <div class="col-md-9">
+      <div class="rounded shadow overflow-hidden">
+        <owl-carousel-o [options]="mainSlidOptions">
+          <ng-template carouselSlide>
+            <img class="w-100" height="400" src="./assets/images/main-slider-1.jpeg" alt="slide1">
+          </ng-template>
+          <ng-template carouselSlide>
+            <img class="w-100" height="400" src="./assets/images/main-slider-2.jpeg" alt="slide2">
+          </ng-template>
+          <ng-template carouselSlide>
+            <img class="w-100" height="400" src="./assets/images/main-slider-3.jpeg" alt="slide3">
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+
+    <!-- Side images -->
+    <div class="col-md-3 d-flex flex-column gap-3">
+      <img class="w-100 rounded shadow-sm" height="195" src="./assets/images/main-slider-1.jpeg" alt="slide1">
+      <img class="w-100 rounded shadow-sm" height="195" src="./assets/images/main-slider-2.jpeg" alt="slide2">
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="py-5 bg-light text-center">
+  <h2 class="fw-bold mb-4">
+    <i class="fa-solid fa-layer-group me-2"></i> Popular Categories
+  </h2>
+  <div class="container">
+    <owl-carousel-o [options]="categoryOptions">
+      <ng-container *ngFor="let category of categories">
+        <ng-template carouselSlide>
+          <div class="p-2">
+            <img class="rounded shadow-sm border" height="260" [src]="category.image" [alt]="category.name" [title]="category.name">
+            <p class="mt-2 fw-semibold">{{category.name}}</p>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>
+
+<section class="container py-5" *ngIf="products.length > 0">
+  <h2 class="fw-bold text-center mb-4">
+    <i class="fa-solid fa-star me-2 text-warning"></i> Popular Products
+  </h2>
+
+  <!-- Search -->
+  <input 
+    type="text" 
+    class="form-control w-50 mx-auto form-control-sm mb-5 rounded-pill shadow-sm" 
+    placeholder="Search products..." 
+    [(ngModel)]="term">
+
+  <!-- Product Grid -->
+  <div class="row g-4">
+    <div *ngFor="let product of products | search:term | slice: 0: 25" 
+         class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+      
+      <!-- Product Card -->
+      <div class="card h-100 shadow-sm border-0 rounded-4 position-relative overflow-hidden product-card" 
+           style="transition: transform 0.2s;">
+
+        <!-- Wishlist Icon -->
+        <i *ngIf="!wishListData.includes($any(product._id))" 
+           (click)="addFav(product._id)" 
+           class="fa-regular fa-heart wishlist-icon position-absolute top-0 end-0 m-2 fs-5 text-secondary"
+           style="opacity:0; transition: opacity 0.3s;"></i>
+
+        <i *ngIf="wishListData.includes($any(product._id))" 
+           (click)="removeWishList(product._id)" 
+           class="fa-solid fa-heart wishlist-icon position-absolute top-0 end-0 m-2 fs-5 text-danger"
+           style="opacity:0; transition: opacity 0.3s;"></i>
+
+        <!-- Product Image & Info -->
+        <div class="card-body d-flex flex-column text-center p-3">
+          <img class="mx-auto mb-3" style="height: 180px; object-fit: contain;" 
+               [src]="product.imageCover" [title]="product.title" [alt]="product.title">
+
+          <h3 class="h6 fw-bold">{{product.title | cuttext:3}}</h3>
+          <h4 class="small text-muted">{{product.category.name}}</h4>
+
+          <!-- Price + Rating -->
+          <div class="mt-auto">
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span class="fw-bold text-success">{{product.price | currency:' EGP '}}</span>
+              <p class="mb-0 small text-warning">
+                <i [class.rating-color]="product.ratingsAverage >= num" 
+                   *ngFor="let num of [1,2,3,4,5]" 
+                   class="fas fa-star"></i>
+                <span class="ms-1">{{product.ratingsAverage}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add to Cart -->
+        <footer class="p-3 text-center add-to-cart-btn" 
+                style="opacity:0; transition: opacity 0.3s;">
+          <button (click)="addProduct(product._id, btnAdd)" #btnAdd 
+                  class="btn btn-sm rounded-pill text-white px-3" 
+                  style="background-color: #8C6E63;">
+            <i class="fa-solid fa-cart-arrow-down me-2"></i> Add To Cart
+          </button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,50 @@
+<section class="container py-5">
+  <h2 class="fw-bold text-center mb-4">
+    <i class="fa-solid fa-shapes me-2" style="color:#8C6E63;"></i> Browse Categories
+  </h2>
+  <p class="text-center text-muted mb-5">Find what you’re looking for with just one click!</p>
+
+  <div class="row g-4">
+    <div *ngFor="let category of categories" class="col-sm-6 col-md-4 col-lg-3">
+      <div [routerLink]="['/categoriesDetails', category._id]" role="button" 
+           class="category-card text-center p-3 shadow-sm border-0 rounded-4 h-100">
+        
+        <!-- Icon (example: change depending on your categories) -->
+        <div class="icon-circle mx-auto mb-3">
+          <i class="fa-solid fa-heart-circle-plus fa-lg"></i>
+        </div>
+
+        <!-- Image -->
+        <img class="w-100 rounded mb-3" style="height:200px; object-fit:cover;" 
+             [src]="category.image" [alt]="category.name">
+
+        <!-- Title -->
+        <h3 class="h6 fw-bold text-dark">{{category.name}}</h3>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .category-card {
+    transition: all 0.3s ease;
+    background: #fff;
+  }
+  .category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+  .icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+   background: #3D3641;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .category-card:hover .icon-circle {
+     background: #F40808;
+   
+  }
+</style>

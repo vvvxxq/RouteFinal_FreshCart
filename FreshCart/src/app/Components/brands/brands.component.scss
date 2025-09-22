@@ -1,0 +1,30 @@
+section{
+    margin-top: 100px;
+}
+
+.brand-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.brand-img-wrapper {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-height: 100px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.08);
+  }
+}

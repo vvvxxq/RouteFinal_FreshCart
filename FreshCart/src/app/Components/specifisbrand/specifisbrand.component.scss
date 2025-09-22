@@ -1,0 +1,37 @@
+section{
+    margin-top: 200px;
+}
+
+.brand-card {
+  background-color: #FFF2DF; // soft light background
+  border-radius: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: default;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  .brand-img {
+    width: 60%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover .brand-img {
+    transform: scale(1.05);
+  }
+
+  .brand-name {
+    font-weight: 700;
+    color: #8C6E63; // main accent
+  }
+
+  .brand-slug {
+    font-weight: 400;
+    color: #D3A376;
+  }
+}

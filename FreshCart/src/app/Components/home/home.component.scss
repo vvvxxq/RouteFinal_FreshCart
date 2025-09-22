@@ -1,0 +1,13 @@
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  .product-card:hover .wishlist-icon,
+  .product-card:hover .add-to-cart-btn {
+    opacity: 1 !important;
+  }
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }

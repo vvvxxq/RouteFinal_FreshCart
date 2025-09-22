@@ -1,0 +1,15 @@
+$main-color: #0aad0a;
+:host{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+
+.my-custom-style {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  

@@ -1,0 +1,40 @@
+<section *ngIf="categoryDetails._id" 
+         class="container py-5">
+  <div class="row g-4 align-items-center bg-white shadow rounded-4 p-4">
+    
+    <!-- Category Image -->
+    <div class="col-md-6 text-center">
+      <div class="p-3">
+        <img [src]="categoryDetails.image" [alt]="categoryDetails.name" 
+             class="img-fluid rounded-4 shadow-sm" 
+             style="max-height:350px; object-fit:cover;">
+      </div>
+    </div>
+    
+    <!-- Category Info -->
+    <div class="col-md-6">
+      <h2 class="fw-bold mb-3 d-flex align-items-center">
+        <i class="fa-solid fa-tags me-2" style="color:#8C6E63;"></i>
+        {{categoryDetails.name}}
+      </h2>
+      <p class="text-muted mb-4">
+        Discover all products under <span class="fw-semibold">{{categoryDetails.name}}</span>.  
+        Find what suits you best and enjoy exploring!
+      </p>
+      <a [routerLink]="['/categories']" 
+         class="btn btn-sm rounded-pill text-white px-4" 
+         style="background-color:#3D3641;">
+        <i class="fa-solid fa-arrow-left me-2"></i> Back to Categories
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+  .bg-main-light {
+    background: #f9f9f9;
+  }
+  .row .col-md-6 img:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
+  }
+</style>
