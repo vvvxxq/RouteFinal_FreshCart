@@ -7,12 +7,5 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-app';
-  
-  constructor(private spinner: NgxSpinnerService) {}
-
-  ngOnInit() {
-    /** spinner starts on init */
-    this.spinner.show();
-  }
+  title = 'my-app';  
 }
